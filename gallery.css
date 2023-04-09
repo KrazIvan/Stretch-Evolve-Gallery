@@ -258,13 +258,12 @@ a.button.dark-mode {
     max-width: calc((100% - 32px) / 3);
     display: flex;
     flex-direction: column;
-    gap: 34px;
+    gap: 10px;
     }
   
 .profile-card-text-container {
     flex-direction: column;
     display: flex;
-    gap: 16px
     }
   
 .profile-image {
