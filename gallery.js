@@ -40,10 +40,10 @@ function createProfileCard(profile) {
 
   const name = `${profile.name.title} ${profile.name.first} ${profile.name.last}`;
   const nameDiv = createProfileInfoDiv("Name", name);
-  const genderDiv = createProfileInfoDiv("Gender", profile.gender);
+  const genderDiv = createProfileInfoDiv("Gender", profile.gender.charAt(0).toUpperCase() + profile.gender.slice(1));
   const ageDiv = createProfileInfoDiv("Age", profile.dob.age);
-  const dobDiv = createProfileInfoDiv("Date of Birth", profile.dob.date);
-  const dorDiv = createProfileInfoDiv("Date registered", profile.registered.date);
+  const dobDiv = createProfileInfoDiv("Date of Birth", profile.dob.date.substr(0, 10));
+  const dorDiv = createProfileInfoDiv("Date registered", profile.registered.date.substr(0, 10));
   const streetDiv = createProfileInfoDiv("Street", profile.location.street.name);
   const postcodeDiv = createProfileInfoDiv("Postcode", profile.location.postcode);
   const stateDiv = createProfileInfoDiv("State", profile.location.state);
