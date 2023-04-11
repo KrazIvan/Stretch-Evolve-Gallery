@@ -92,6 +92,11 @@ function fetchProfiles(num_profiles) {
     .catch(error => console.error(error));
 }
 
+function removeAllProfiles() {
+  const profileCards = document.querySelectorAll(".profile-card");
+  profileCards.forEach(card => {card.remove()})
+}
+
 function applyFilters() {
   const firstNameInput = document.querySelector("#first-name-input").value.trim().toLowerCase();
   const lastNameInput = document.querySelector("#last-name-input").value.trim().toLowerCase();
