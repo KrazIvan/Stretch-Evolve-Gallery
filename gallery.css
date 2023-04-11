@@ -158,7 +158,7 @@ a.button.dark-mode {
     justify-content: center;
   }
   
-#filter-section input {
+#filter-section input, #filter-section select{
     background-color: #fffed0;
     padding: 8px;
     border-radius: 4px;
@@ -170,15 +170,15 @@ a.button.dark-mode {
     max-width: 200px;
   }
 
-#filter-section input::placeholder {
+#filter-section input::placeholder, #gender-input option, #gender-input {
     color: #292727;
   }
 
-#filter-section input.darkmode::placeholder {
+#filter-section input.dark-mode::placeholder, #gender-input.dark-mode option, #gender-input.dark-mode {
     color: #bca0be;
   }
 
-#filter-section input.darkmode {
+#filter-section input.dark-mode, #filter-section select.dark-mode{
     background-color: #473a49;
   }
 
