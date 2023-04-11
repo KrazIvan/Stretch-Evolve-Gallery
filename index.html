@@ -67,8 +67,8 @@
                         <option value="female">Female</option>
                       </select>
                       <input type="number" id="age-input" name="age" placeholder="Age">
-                      <input type="text" id="DOB-input" name="DOB" placeholder="Date of Birth">
-                      <input type="text" id="DOR-input" name="DOR" placeholder="Date registered">
+                      <input type="text" id="DOB-input" name="DOB" placeholder="Date of Birth" onchange="formatDate(this)" onfocus="(this.type='date')"onblur="(this.type='text')">
+                      <input type="text" id="DOR-input" name="DOR" placeholder="Date registered" onchange="formatDate(this)" onfocus="(this.type='date')"onblur="(this.type='text')">
                       <input type="text" id="street-input" name="street" placeholder="Street">
                       <input type="text" id="postal-input" name="postal" placeholder="Postcode">
                       <input type="text" id="city-input" name="city" placeholder="City">
@@ -82,7 +82,7 @@
                     <a class="button" onclick="applyFilters()">
                       <span class="button-text">Apply filters</span>
                     </a>
-                    <a class="button" onclick="applyFilters()">
+                    <a class="button" onclick="removeFilters()">
                       <span class="button-text">Remove filters</span>
                     </a>
                   </div>
