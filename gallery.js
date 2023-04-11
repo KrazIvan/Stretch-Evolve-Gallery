@@ -97,13 +97,34 @@ function removeAllProfiles() {
   profileCards.forEach(card => {card.remove()})
 }
 
+function removeFilters() {
+  document.querySelector("#first-name-input").value = "";
+  document.querySelector("#last-name-input").value = "";
+  document.querySelector("#gender-input").value = "all";
+  document.querySelector("#age-input").value = "";
+  document.querySelector("#DOB-input").value = "";
+  document.querySelector("#DOR-input").value = "";
+  document.querySelector("#street-input").value = "";
+  document.querySelector("#postal-input").value = "";
+  document.querySelector("#city-input").value = "";
+  document.querySelector("#state-input").value = "";
+  document.querySelector("#country-input").value = "";
+  document.querySelector("#username-input").value = "";
+  document.querySelector("#email-input").value = "";
+}
+
 function applyFilters() {
   const firstNameInput = document.querySelector("#first-name-input").value.trim().toLowerCase();
   const lastNameInput = document.querySelector("#last-name-input").value.trim().toLowerCase();
   const genderInput = document.querySelector("#gender-input").value.trim().toLowerCase();
   const ageInput = document.querySelector("#age-input").value.trim().toLowerCase();
   const dobInput = document.querySelector("#DOB-input").value.trim().toLowerCase();
+  //console.log(dobInput)
+  //console.log(dobInput == "")
+  //console.log(dobInput === "")
   const dorInput = document.querySelector("#DOR-input").value.trim().toLowerCase();
+  //console.log(dobInput == "")
+  //console.log(dorInput === "")
   const streetInput = document.querySelector("#street-input").value.trim().toLowerCase();
   const postalInput = document.querySelector("#postal-input").value.trim().toLowerCase();
   const cityInput = document.querySelector("#city-input").value.trim().toLowerCase();
@@ -132,8 +153,8 @@ function applyFilters() {
         || !name.includes(lastNameInput)
         || (genderInput !== "all" && gender !== genderInput)
         || (ageInput != "" && age != ageInput)
-        || !dob.includes(dobInput)
-        || !dor.includes(dorInput)
+        || (dobInput != "" && dob != dobInput)
+        || (dorInput != "" && dor != dorInput)
         || !street.includes(streetInput)
         || !postal.includes(postalInput)
         || !city.includes(cityInput)
@@ -144,6 +165,14 @@ function applyFilters() {
       card.remove();
     }
   });
+}
+
+function formatDate(input) {
+  var date = new Date(input.value);
+  var year = date.getFullYear();
+  var month = ("0" + (date.getMonth() + 1)).slice(-2);
+  var day = ("0" + date.getDate()).slice(-2);
+  input.value = year + "-" + month + "-" + day;
 }
 
 if (nowHour >= 18 || nowHour < 8) {
