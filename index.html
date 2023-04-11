@@ -61,13 +61,24 @@
                     <form id="filter-form">
                       <input type="text" id="first-name-input" name="first-name" placeholder="First Name">
                       <input type="text" id="last-name-input" name="last-name" placeholder="Last Name">
-                      <input type="text" id="country-input" name="country" placeholder="Country">
-                      <input type="text" id="city-input" name="city" placeholder="City">
+                      <select type="text" id="gender-input" name="gender" placeholder="Gender">
+                        <option value="all">All</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                      </select>
                       <input type="number" id="age-input" name="age" placeholder="Age">
+                      <input type="text" id="DOB-input" name="DOB" placeholder="Date of Birth">
+                      <input type="text" id="DOR-input" name="DOR" placeholder="Date registered">
+                      <input type="text" id="street-input" name="street" placeholder="Street">
+                      <input type="text" id="postal-input" name="postal" placeholder="Postcode">
+                      <input type="text" id="city-input" name="city" placeholder="City">
+                      <input type="text" id="state-input" name="state" placeholder="State">
+                      <input type="text" id="country-input" name="country" placeholder="Country">
+                      <input type="text" id="username-input" name="username" placeholder="Username">
                       <input type="email" id="email-input" name="email" placeholder="Email">
                     </form>
                   </div>
-                  <a class="button" onclick="darkMode()">
+                  <a class="button" onclick="applyFilters()">
                     <span class="button-text">Apply filters</span>
                 </a>
                 <div id="profiles-section">
