@@ -259,6 +259,7 @@ a.button.dark-mode {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    align-items: center;
     }
   
 .profile-card-text-container {
@@ -267,7 +268,7 @@ a.button.dark-mode {
     }
   
 .profile-image {
-    width: 100%;
+    width: 200px;
     height: 200px;
     object-fit: cover;
     object-position: center;
