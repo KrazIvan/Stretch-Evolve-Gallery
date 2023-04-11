@@ -5,6 +5,7 @@ const buttons = document.querySelectorAll("a.button");
 const navTitle = document.querySelector(".nav-title");
 const filterSection = document.getElementById("filter-section");
 const inputs = filterSection.getElementsByTagName("input");
+const selects = filterSection.getElementsByTagName("select");
 const filterButton = filterSection.getElementsByTagName("button")[0];
 document.addEventListener("DOMContentLoaded", function() {
     fetchProfiles();
@@ -46,6 +47,7 @@ function createProfileCard(profile) {
   const dorDiv = createProfileInfoDiv("Date registered", profile.registered.date.substr(0, 10));
   const streetDiv = createProfileInfoDiv("Street", profile.location.street.name);
   const postcodeDiv = createProfileInfoDiv("Postcode", profile.location.postcode);
+  const cityDiv = createProfileInfoDiv("City", profile.location.city);
   const stateDiv = createProfileInfoDiv("State", profile.location.state);
   const countryDiv = createProfileInfoDiv("Country", profile.location.country);
   const usernameDiv = createProfileInfoDiv("Username", profile.login.username);
@@ -60,6 +62,7 @@ function createProfileCard(profile) {
   profileTextContainer.appendChild(dorDiv);
   profileTextContainer.appendChild(streetDiv);
   profileTextContainer.appendChild(postcodeDiv);
+  profileTextContainer.appendChild(cityDiv);
   profileTextContainer.appendChild(stateDiv);
   profileTextContainer.appendChild(countryDiv);
   profileTextContainer.appendChild(usernameDiv);
@@ -89,6 +92,55 @@ function fetchProfiles() {
     .catch(error => console.error(error));
 }
 
+function applyFilters() {
+  const firstNameInput = document.querySelector("#first-name-input").value.trim().toLowerCase();
+  const lastNameInput = document.querySelector("#last-name-input").value.trim().toLowerCase();
+  const genderInput = document.querySelector("#gender-input").value.trim().toLowerCase();
+  const ageInput = document.querySelector("#age-input").value.trim().toLowerCase();
+  const dobInput = document.querySelector("#DOB-input").value.trim().toLowerCase();
+  const dorInput = document.querySelector("#DOR-input").value.trim().toLowerCase();
+  const streetInput = document.querySelector("#street-input").value.trim().toLowerCase();
+  const postalInput = document.querySelector("#postal-input").value.trim().toLowerCase();
+  const cityInput = document.querySelector("#city-input").value.trim().toLowerCase();
+  const stateInput = document.querySelector("#state-input").value.trim().toLowerCase();
+  const countryInput = document.querySelector("#country-input").value.trim().toLowerCase();
+  const usernameInput = document.querySelector("#username-input").value.trim().toLowerCase();
+  const emailInput = document.querySelector("#email-input").value.trim().toLowerCase();
+
+  const profileCards = document.querySelectorAll(".profile-card");
+
+  profileCards.forEach(card => {
+    const name = card.querySelector(".profile-info:nth-child(1)").textContent.toLowerCase().split(": ")[1].trim();
+    const gender = card.querySelector(".profile-info:nth-child(2)").textContent.toLowerCase().split(": ")[1].trim();
+    const age = card.querySelector(".profile-info:nth-child(3)").textContent.toLowerCase().split(": ")[1].trim();
+    const dob = card.querySelector(".profile-info:nth-child(4)").textContent.toLowerCase().split(": ")[1].trim();
+    const dor = card.querySelector(".profile-info:nth-child(5)").textContent.toLowerCase().split(": ")[1].trim();
+    const street = card.querySelector(".profile-info:nth-child(6)").textContent.toLowerCase().split(": ")[1].trim();
+    const postal = card.querySelector(".profile-info:nth-child(7)").textContent.toLowerCase().split(": ")[1].trim();
+    const city = card.querySelector(".profile-info:nth-child(8)").textContent.toLowerCase().split(": ")[1].trim();
+    const state = card.querySelector(".profile-info:nth-child(9)").textContent.toLowerCase().split(": ")[1].trim();
+    const country = card.querySelector(".profile-info:nth-child(10)").textContent.toLowerCase().split(": ")[1].trim();
+    const username = card.querySelector(".profile-info:nth-child(11)").textContent.toLowerCase().split(": ")[1].trim();
+    const email = card.querySelector(".profile-info:nth-child(13)").textContent.toLowerCase().split(": ")[1].trim();
+  
+    if (!name.includes(firstNameInput)
+        || !name.includes(lastNameInput)
+        || (genderInput !== "all" && gender !== genderInput)
+        || !age.includes(ageInput)
+        || !dob.includes(dobInput)
+        || !dor.includes(dorInput)
+        || !street.includes(streetInput)
+        || !postal.includes(postalInput)
+        || !city.includes(cityInput)
+        || !state.includes(stateInput)
+        || !country.includes(countryInput)
+        || !username.includes(usernameInput)
+        || !email.includes(emailInput)) {
+      card.remove();
+    }
+  });
+}
+
 if (nowHour >= 18 || nowHour < 8) {
     body.classList.toggle("dark-mode");
     navTitle.classList.toggle("dark-mode");
@@ -97,12 +149,16 @@ if (nowHour >= 18 || nowHour < 8) {
       button.classList.toggle("dark-mode");
     });
     
-    filterSection.classList.toggle("darkmode");
+    filterSection.classList.toggle("dark-mode");
     for (let i = 0; i < inputs.length; i++) {
-      inputs[i].classList.toggle("darkmode");
+      inputs[i].classList.toggle("dark-mode");
+    }
+    filterSection.classList.toggle("dark-mode");
+    for (let i = 0; i < selects.length; i++) {
+      selects[i].classList.toggle("dark-mode");
     }
 
-    filterButton.classList.toggle("darkmode");
+    filterButton.classList.toggle("dark-mode");
 }
 
 function playRandomSound(soundArray) {
@@ -121,10 +177,13 @@ function darkMode() {
       button.classList.toggle("dark-mode");
     });
     
-    filterSection.classList.toggle("darkmode");
+    filterSection.classList.toggle("dark-mode");
     for (let i = 0; i < inputs.length; i++) {
-      inputs[i].classList.toggle("darkmode");
+      inputs[i].classList.toggle("dark-mode");
     }
-
-    filterButton.classList.toggle("darkmode");
+    filterSection.classList.toggle("dark-mode");
+    for (let i = 0; i < selects.length; i++) {
+      selects[i].classList.toggle("dark-mode");
+    }
+    filterButton.classList.toggle("dark-mode");
 }
