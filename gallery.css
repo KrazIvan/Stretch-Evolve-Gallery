@@ -139,7 +139,7 @@ a.button.dark-mode {
 
 /* Filters */
 
-.filter-title{
+.filter-title, .profile-loader-title{
     font-size: 26px;
     font-weight: 700;
     padding-bottom: 20px;
@@ -240,7 +240,7 @@ a.button.dark-mode {
   /* Profile Section */
   
 #profiles-section {
-    padding-top: 150px;
+    padding-top: 60px;
     display: flex;
     flex-direction: column;
     gap: 16px;
