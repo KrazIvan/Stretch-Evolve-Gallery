@@ -87,7 +87,7 @@
                     </a>
                   </div>
                   
-                  <div id="title-header" class="profile-loader-title">
+                  <div id="title-header" class="profile-loader-title-header">
                     <span class="profile-loader-title">Profile Loader</span>
                 </div>
                 <div class = "multibuttons" id = "paging-options">
@@ -122,6 +122,37 @@
                   <div class="profiles-container">
                   </div>
                 </div>
+              </div>
+              <div id="bottom" class="bottom">
+                <div id="title-header" class="profile-loader-title-header">
+                  <span class="profile-loader-title">Profile Loader</span>
+              </div>
+              <div class = "multibuttons" id = "paging-options">
+                <a class="button" onclick="removeAllProfiles()">
+                  <span class="button-text">Remove all profiles</span>
+              </a>
+                <a class="button" onclick="fetchProfiles(num_profiles=1)">
+                  <span class="button-text">1</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=5)">
+                <span class="button-text">5</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=10)">
+                <span class="button-text">10</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=50)">
+                <span class="button-text">50</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=100)">
+                <span class="button-text">100</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=250)">
+                <span class="button-text">250</span>
+              </a>
+              <a class="button" onclick="fetchProfiles(num_profiles=1000)">
+                <span class="button-text">1000</span>
+              </a>
+              </div>
               </div>
               <div id="footer">
                 <a class="icon-link" target="_blank" href="https://www.linkedin.com/in/ivanshabalin/">
