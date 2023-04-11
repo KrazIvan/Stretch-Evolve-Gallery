@@ -87,10 +87,13 @@
                     </a>
                   </div>
                   
-                  <div id="title-header">
-                    <span class="filter-title">Load more profiles</span>
+                  <div id="title-header" class="profile-loader-title">
+                    <span class="profile-loader-title">Profile Loader</span>
                 </div>
                 <div class = "multibuttons" id = "paging-options">
+                  <a class="button" onclick="removeAllProfiles()">
+                    <span class="button-text">Remove all profiles</span>
+                </a>
                   <a class="button" onclick="fetchProfiles(num_profiles=1)">
                     <span class="button-text">1</span>
                 </a>
