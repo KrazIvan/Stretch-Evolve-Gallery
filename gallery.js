@@ -126,7 +126,7 @@ function applyFilters() {
     if (!name.includes(firstNameInput)
         || !name.includes(lastNameInput)
         || (genderInput !== "all" && gender !== genderInput)
-        || !(age == ageInput)
+        || (ageInput != "" && age != ageInput)
         || !dob.includes(dobInput)
         || !dor.includes(dorInput)
         || !street.includes(streetInput)
@@ -158,7 +158,7 @@ if (nowHour >= 18 || nowHour < 8) {
       selects[i].classList.toggle("dark-mode");
     }
 
-    filterButton.classList.toggle("dark-mode");
+    //filterButton.classList.toggle("dark-mode");
 }
 
 function playRandomSound(soundArray) {
@@ -185,5 +185,5 @@ function darkMode() {
     for (let i = 0; i < selects.length; i++) {
       selects[i].classList.toggle("dark-mode");
     }
-    filterButton.classList.toggle("dark-mode");
+    //filterButton.classList.toggle("dark-mode");
 }
