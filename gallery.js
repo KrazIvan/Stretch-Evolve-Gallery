@@ -8,7 +8,7 @@ const inputs = filterSection.getElementsByTagName("input");
 const selects = filterSection.getElementsByTagName("select");
 const filterButton = filterSection.getElementsByTagName("button")[0];
 document.addEventListener("DOMContentLoaded", function() {
-    fetchProfiles();
+    fetchProfiles(num_profiles=50);
   });
 
 const lightSwitchSounds = [
@@ -83,8 +83,8 @@ function displayProfiles(data) {
   });
 }
 
-function fetchProfiles() {
-  fetch("https://randomuser.me/api/?results=50")
+function fetchProfiles(num_profiles) {
+  fetch(("https://randomuser.me/api/?results=" + num_profiles))
     .then(response => response.json())
     .then(data => {
       displayProfiles(data);
@@ -126,7 +126,7 @@ function applyFilters() {
     if (!name.includes(firstNameInput)
         || !name.includes(lastNameInput)
         || (genderInput !== "all" && gender !== genderInput)
-        || !age.includes(ageInput)
+        || !(age == ageInput)
         || !dob.includes(dobInput)
         || !dor.includes(dorInput)
         || !street.includes(streetInput)
