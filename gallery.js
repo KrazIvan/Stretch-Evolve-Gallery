@@ -19,6 +19,8 @@ const lightSwitchSounds = [
     "./assets/audio/light_switch_audio5.wav"];
 
 
+
+// Profile code
 const profilesContainer = document.querySelector(".profiles-container");
 
 function createProfileInfoDiv(label, value) {
@@ -97,6 +99,8 @@ function removeAllProfiles() {
   profileCards.forEach(card => {card.remove()})
 }
 
+
+// Filter code
 function removeFilters() {
   document.querySelector("#first-name-input").value = "";
   document.querySelector("#last-name-input").value = "";
@@ -117,19 +121,14 @@ function applyFilters() {
   const firstNameInput = document.querySelector("#first-name-input").value.trim().toLowerCase();
   const lastNameInput = document.querySelector("#last-name-input").value.trim().toLowerCase();
   const genderInput = document.querySelector("#gender-input").value.trim().toLowerCase();
-  const ageInput = document.querySelector("#age-input").value.trim().toLowerCase();
-  const dobInput = document.querySelector("#DOB-input").value.trim().toLowerCase();
-  //console.log(dobInput)
-  //console.log(dobInput == "")
-  //console.log(dobInput === "")
-  const dorInput = document.querySelector("#DOR-input").value.trim().toLowerCase();
-  //console.log(dobInput == "")
-  //console.log(dorInput === "")
+  const ageInput = document.querySelector("#age-input").value;
+  const dobInput = document.querySelector("#DOB-input").value;
+  const dorInput = document.querySelector("#DOR-input").value;
   const streetInput = document.querySelector("#street-input").value.trim().toLowerCase();
   const postalInput = document.querySelector("#postal-input").value.trim().toLowerCase();
   const cityInput = document.querySelector("#city-input").value.trim().toLowerCase();
   const stateInput = document.querySelector("#state-input").value.trim().toLowerCase();
-  const countryInput = document.querySelector("#country-input").value.trim().toLowerCase();
+  let countryInput = document.querySelector("#country-input").value.trim().toLowerCase();
   const usernameInput = document.querySelector("#username-input").value.trim().toLowerCase();
   const emailInput = document.querySelector("#email-input").value.trim().toLowerCase();
 
@@ -138,9 +137,9 @@ function applyFilters() {
   profileCards.forEach(card => {
     const name = card.querySelector(".profile-info:nth-child(1)").textContent.toLowerCase().split(": ")[1].trim();
     const gender = card.querySelector(".profile-info:nth-child(2)").textContent.toLowerCase().split(": ")[1].trim();
-    const age = card.querySelector(".profile-info:nth-child(3)").textContent.toLowerCase().split(": ")[1].trim();
-    const dob = card.querySelector(".profile-info:nth-child(4)").textContent.toLowerCase().split(": ")[1].trim();
-    const dor = card.querySelector(".profile-info:nth-child(5)").textContent.toLowerCase().split(": ")[1].trim();
+    const age = card.querySelector(".profile-info:nth-child(3)").textContent.split(": ")[1];
+    const dob = card.querySelector(".profile-info:nth-child(4)").textContent.split(": ")[1];
+    const dor = card.querySelector(".profile-info:nth-child(5)").textContent.split(": ")[1];
     const street = card.querySelector(".profile-info:nth-child(6)").textContent.toLowerCase().split(": ")[1].trim();
     const postal = card.querySelector(".profile-info:nth-child(7)").textContent.toLowerCase().split(": ")[1].trim();
     const city = card.querySelector(".profile-info:nth-child(8)").textContent.toLowerCase().split(": ")[1].trim();
@@ -148,13 +147,21 @@ function applyFilters() {
     const country = card.querySelector(".profile-info:nth-child(10)").textContent.toLowerCase().split(": ")[1].trim();
     const username = card.querySelector(".profile-info:nth-child(11)").textContent.toLowerCase().split(": ")[1].trim();
     const email = card.querySelector(".profile-info:nth-child(13)").textContent.toLowerCase().split(": ")[1].trim();
+
+    if (countryInput == "us" || countryInput == "usa") {
+      countryInput = "united states";
+    } else if (countryInput == "uk" || countryInput == "gb") {
+      countryInput = "united kingdom";
+    } else if (countryInput == "uae") {
+      countryInput = "united arab emirates";
+    }
   
     if (!name.includes(firstNameInput)
         || !name.includes(lastNameInput)
         || (genderInput !== "all" && gender !== genderInput)
-        || (ageInput != "" && age != ageInput)
-        || (dobInput != "" && dob != dobInput)
-        || (dorInput != "" && dor != dorInput)
+        || (ageInput !== "" && age !== ageInput)
+        || (dobInput !== "" && dob !== dobInput)
+        || (dorInput !== "" && dor !== dorInput)
         || !street.includes(streetInput)
         || !postal.includes(postalInput)
         || !city.includes(cityInput)
@@ -168,56 +175,45 @@ function applyFilters() {
 }
 
 function formatDate(input) {
-  var date = new Date(input.value);
-  var year = date.getFullYear();
-  var month = ("0" + (date.getMonth() + 1)).slice(-2);
-  var day = ("0" + date.getDate()).slice(-2);
+  let date = new Date(input.value);
+  let year = date.getFullYear();
+  let month = ("0" + (date.getMonth() + 1)).slice(-2);
+  let day = ("0" + date.getDate()).slice(-2);
   input.value = year + "-" + month + "-" + day;
 }
 
-if (nowHour >= 18 || nowHour < 8) {
-    body.classList.toggle("dark-mode");
-    navTitle.classList.toggle("dark-mode");
-  
-    buttons.forEach(button => {
-      button.classList.toggle("dark-mode");
-    });
-    
-    filterSection.classList.toggle("dark-mode");
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].classList.toggle("dark-mode");
-    }
-    filterSection.classList.toggle("dark-mode");
-    for (let i = 0; i < selects.length; i++) {
-      selects[i].classList.toggle("dark-mode");
-    }
 
-    //filterButton.classList.toggle("dark-mode");
+// Dark Mode code
+if (nowHour >= 18 || nowHour < 8) {
+  toggleDarkMode();
 }
 
 function playRandomSound(soundArray) {
-    var randomIndex = Math.floor(Math.random() * soundArray.length);
-    var lightSwitchSound = new Audio(soundArray[randomIndex]);
+    let randomIndex = Math.floor(Math.random() * soundArray.length);
+    let lightSwitchSound = new Audio(soundArray[randomIndex]);
     lightSwitchSound.play();
   }
   
 function darkMode() {
     playRandomSound(lightSwitchSounds);
+    toggleDarkMode();
+}
 
-    body.classList.toggle("dark-mode");
-    navTitle.classList.toggle("dark-mode");
+function toggleDarkMode() {
+  body.classList.toggle("dark-mode");
+  navTitle.classList.toggle("dark-mode");
+
+  buttons.forEach(button => {
+    button.classList.toggle("dark-mode");
+  });
   
-    buttons.forEach(button => {
-      button.classList.toggle("dark-mode");
-    });
-    
-    filterSection.classList.toggle("dark-mode");
-    for (let i = 0; i < inputs.length; i++) {
-      inputs[i].classList.toggle("dark-mode");
-    }
-    filterSection.classList.toggle("dark-mode");
-    for (let i = 0; i < selects.length; i++) {
-      selects[i].classList.toggle("dark-mode");
-    }
-    //filterButton.classList.toggle("dark-mode");
+  filterSection.classList.toggle("dark-mode");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].classList.toggle("dark-mode");
+  }
+  filterSection.classList.toggle("dark-mode");
+  for (let i = 0; i < selects.length; i++) {
+    selects[i].classList.toggle("dark-mode");
+  }
+  //filterButton.classList.toggle("dark-mode");
 }
