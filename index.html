@@ -78,7 +78,7 @@
                       <input type="email" id="email-input" name="email" placeholder="Email">
                     </form>
                   </div>
-                  <div class = "multibuttons" id = "filter-options">
+                  <div class ="multibuttons" id="filter-options">
                     <a class="button" onclick="applyFilters()">
                       <span class="button-text">Apply filters</span>
                     </a>
@@ -86,11 +86,22 @@
                       <span class="button-text">Remove filters</span>
                     </a>
                   </div>
-                  
+                    <div id="title-header" class="import-data-title-header">
+                      <span class="import-title">Import Data from Present Profiles to your API</span>
+                  </div>
+                  <div id="import-section">
+                      <form id="import-form">
+                      <input type="text" id="api-url-input" name="api-url" placeholder="API URL">
+                      <input type="text" id="api-key-input" name="api-key" placeholder="API-key">
+                      </form>
+                    </div>
+                      <a class="button" onclick="sendData()">
+                        <span class="button-text">Import Data</span>
+                      </a>
                   <div id="title-header" class="profile-loader-title-header">
                     <span class="profile-loader-title">Profile Loader</span>
                 </div>
-                <div class = "multibuttons" id = "paging-options">
+                <div class="multibuttons" id="paging-options">
                   <a class="button" onclick="removeAllProfiles()">
                     <span class="button-text">Remove all profiles</span>
                 </a>
