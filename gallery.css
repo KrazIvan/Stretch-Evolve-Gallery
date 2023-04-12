@@ -369,49 +369,96 @@ a.icon-link:hover {
   
   /* Extra Extra large devices (large laptops and desktops, 1200px and below) */
   @media only screen and (max-width: 1600px) {
-    #main-content {
+    #main-content, #bottom {
       margin: 225px 275px;
     }
   }
   
   /* Extra large devices (large laptops and desktops, 1200px and below) */
   @media only screen and (max-width: 1200px) {
-    #main-content {
+    #main-content, #bottom {
       margin: 225px 175px;
     }
   }
   
   /* Large devices (laptops/desktops, 1000px and below) */
   @media only screen and (max-width: 1000px) {
-    #main-content {
+    #main-content, #bottom {
       margin: 225px 75px;
-    }
+    } 
   }
   
   /* Small devices (portrait tablets and large phones, 800px and below) */
   @media only screen and (max-width: 800px) {
-    #main-content {
+    #main-content, #bottom {
       margin: 150px 50px;
-    }
-  
-    #portfolio-header {
-      flex-direction: column;
     }
   
     .profile-card {
       max-width: calc((100% - 16px) / 2);
     }
+
+    #footer {
+      padding: 20px 20px;
+    }
   }
   
   /* Small devices (portrait tablets and large phones, 600px and below) */
   @media only screen and (max-width: 600px) {
-    #main-content {
+    #main-content, #bottom {
       margin: 125px 20px;
     }
   
     .profile-card {
       max-width: 100%;
     }
+    #filter-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+  }
+    #import-form {
+      display: flex;
+      flex-direction: column;
+  }
+  .multibuttons {
+    display: flex;
+    gap: 2px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.navbar {
+  display: none;
+}
+}
+
+    /* Small devices (portrait tablets and large phones, 600px and below) */
+    @media only screen and (max-width: 300px) {
+      #main-content, #bottom {
+        margin: 125px 20px;
+      }
+    
+      .profile-card {
+        max-width: 100%;
+      }
+      #filter-section {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+      #import-form {
+        display: flex;
+        flex-direction: column;
+    }
+    .multibuttons {
+      display: flex;
+      gap: 2px;
+      flex-wrap: wrap;
+      justify-content: space-around;
+  }
+  .navbar {
+    display: none;
+  }
   }
   
   
