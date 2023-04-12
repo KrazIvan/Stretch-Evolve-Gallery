@@ -161,7 +161,7 @@ function applyFilters() {
 
     if (countryInput == "us" || countryInput == "usa") {
       countryInput = "united states";
-    } else if (countryInput == "uk" || countryInput == "gb") {
+    } else if (countryInput == "uk" || countryInput == "gb" || countryInput == "great britain") {
       countryInput = "united kingdom";
     } else if (countryInput == "uae") {
       countryInput = "united arab emirates";
