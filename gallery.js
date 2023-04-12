@@ -4,6 +4,8 @@ const body = document.body;
 const buttons = document.querySelectorAll("a.button");
 const navTitle = document.querySelector(".nav-title");
 const filterSection = document.getElementById("filter-section");
+const importSection = document.getElementById("import-section");
+const apiInputs = importSection.querySelectorAll("input");
 const inputs = filterSection.getElementsByTagName("input");
 const selects = filterSection.getElementsByTagName("select");
 const filterButton = filterSection.getElementsByTagName("button")[0];
@@ -202,6 +204,7 @@ function darkMode() {
 function toggleDarkMode() {
   body.classList.toggle("dark-mode");
   navTitle.classList.toggle("dark-mode");
+  importSection.classList.toggle("dark-mode");
 
   buttons.forEach(button => {
     button.classList.toggle("dark-mode");
@@ -211,9 +214,69 @@ function toggleDarkMode() {
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].classList.toggle("dark-mode");
   }
-  filterSection.classList.toggle("dark-mode");
-  for (let i = 0; i < selects.length; i++) {
-    selects[i].classList.toggle("dark-mode");
-  }
+  apiInputs.forEach(input => {
+    input.classList.toggle("dark-mode");
+  });
   //filterButton.classList.toggle("dark-mode");
+}
+
+
+// Data Import code
+
+function sendData() {
+  const apiUrl = document.getElementById("api-url").value;
+  const apiKey = document.getElementById("api-key").value;
+  const profileCards = document.querySelectorAll(".profile-card-text-container");
+
+  const data = [];
+
+  profileCards.forEach((card) => {
+    const name = card.querySelector(".profile-info:nth-child(1)").textContent.replace("Name: ", "");
+    const gender = card.querySelector(".profile-info:nth-child(2)").textContent.replace("Gender: ", "");
+    const age = card.querySelector(".profile-info:nth-child(3)").textContent.replace("Age: ", "");
+    const dateOfBirth = card.querySelector(".profile-info:nth-child(4)").textContent.replace("Date of Birth: ", "");
+    const dateRegistered = card.querySelector(".profile-info:nth-child(5)").textContent.replace("Date registered: ", "");
+    const street = card.querySelector(".profile-info:nth-child(6)").textContent.replace("Street: ", "");
+    const postcode = card.querySelector(".profile-info:nth-child(7)").textContent.replace("Postcode: ", "");
+    const city = card.querySelector(".profile-info:nth-child(8)").textContent.replace("City: ", "");
+    const state = card.querySelector(".profile-info:nth-child(9)").textContent.replace("State: ", "");
+    const country = card.querySelector(".profile-info:nth-child(10)").textContent.replace("Country: ", "");
+    const username = card.querySelector(".profile-info:nth-child(11)").textContent.replace("Username: ", "");
+    const password = card.querySelector(".profile-info:nth-child(12)").textContent.replace("Password: ", "");
+    const email = card.querySelector(".profile-info:nth-child(13)").textContent.replace("Email: ", "");
+    const phone = card.querySelector(".profile-info:nth-child(14)").textContent.replace("Phone: ", "");
+
+    data.push({
+      name,
+      gender,
+      age,
+      dateOfBirth,
+      dateRegistered,
+      street,
+      postcode,
+      city,
+      state,
+      country,
+      username,
+      password,
+      email,
+      phone
+    });
+  });
+  
+  fetch(apiUrl, {
+    method: 'POST',
+    body: JSON.stringify(data),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + apiKey
+    }
+  })
+    .then(response => response.json())
+    .then(result => {
+      console.log("Success:", result);
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
 }
