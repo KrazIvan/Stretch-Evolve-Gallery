@@ -147,7 +147,7 @@ a.button.dark-mode {
 
 /* Filters */
 
-.filter-title, .profile-loader-title{
+.filter-title, .profile-loader-title, .import-title{
     font-size: 26px;
     font-weight: 700;
     padding-bottom: 20px;
@@ -159,14 +159,14 @@ a.button.dark-mode {
     gap: 17px;
 }
 
-#filter-section {
+#filter-section{
     margin-top: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
   }
   
-#filter-section input, #filter-section select{
+#filter-section input, #filter-section select, #import-section input{
     background-color: #fffed0;
     padding: 8px;
     border-radius: 4px;
@@ -178,19 +178,19 @@ a.button.dark-mode {
     max-width: 200px;
   }
 
-#filter-section input::placeholder, #gender-input option, #gender-input {
+#filter-section input::placeholder, #gender-input option, #gender-input, #import-section input::placeholder {
     color: #292727;
   }
 
-#filter-section input.dark-mode::placeholder, #gender-input.dark-mode option, #gender-input.dark-mode {
+#filter-section input.dark-mode::placeholder, #gender-input.dark-mode option, #gender-input.dark-mode, #import-section input.dark-mode::placeholder {
     color: #bca0be;
   }
 
-#filter-section input.dark-mode, #filter-section select.dark-mode{
+#filter-section input.dark-mode, #filter-section select.dark-mode, #import-section input.dark-mode{
     background-color: #473a49;
   }
 
-#filter-section button {
+/*#filter-section button {
     padding: 8px;
     border-radius: 4px;
     border: none;
@@ -204,7 +204,7 @@ a.button.dark-mode {
 
 #filter-section button:hover {
     background-color: #005EA7;
-  }
+  }*/
 
   /* Navbar */
 .navbar {
@@ -260,6 +260,11 @@ a.button.dark-mode {
     flex-wrap: wrap;
   }
 .profile-loader-title-header {
+    padding-top: 50px;
+  }
+
+/* Data Importer */
+.import-data-title-header {
     padding-top: 100px;
   }
 
