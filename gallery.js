@@ -9,9 +9,18 @@ const apiInputs = importSection.querySelectorAll("input");
 const inputs = filterSection.getElementsByTagName("input");
 const selects = filterSection.getElementsByTagName("select");
 const filterButton = filterSection.getElementsByTagName("button")[0];
+var onPhone = /Mobi/.test(navigator.userAgent);
+
 document.addEventListener("DOMContentLoaded", function() {
     fetchProfiles(num_profiles=50);
   });
+
+if (onPhone) {
+    document.getElementById("DOB-input").removeAttribute("onfocus");
+    document.getElementById("DOB-input").removeAttribute("onblur");
+    document.getElementById("DOR-input").removeAttribute("onfocus");
+    document.getElementById("DOR-input").removeAttribute("onblur");
+  } 
 
 const lightSwitchSounds = [
     "./assets/audio/light_switch_audio1.wav",
