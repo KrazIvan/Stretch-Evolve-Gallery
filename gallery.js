@@ -214,6 +214,10 @@ function toggleDarkMode() {
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].classList.toggle("dark-mode");
   }
+  filterSection.classList.toggle("dark-mode");
+  for (let i = 0; i < selects.length; i++) {
+    selects[i].classList.toggle("dark-mode");
+  }
   apiInputs.forEach(input => {
     input.classList.toggle("dark-mode");
   });
